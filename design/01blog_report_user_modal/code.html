@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01Blog – Report user</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"tertiary-container":"#4b4dd8","surface-container-high":"#dce9ff","on-error-container":"#93000a","surface-tint":"#4d44e3","surface-variant":"#d3e4fe","tertiary":"#3130c0","on-tertiary":"#ffffff","on-tertiary-container":"#d9d8ff","primary-fixed":"#e2dfff","surface":"#f8f9ff","on-primary-fixed":"#0f0069","tertiary-fixed-dim":"#c0c1ff","surface-container-highest":"#d3e4fe","on-secondary-container":"#004666","surface-container":"#e5eeff","tertiary-fixed":"#e1e0ff","primary-fixed-dim":"#c3c0ff","error-container":"#ffdad6","on-tertiary-fixed":"#07006c","secondary":"#006591","primary":"#3525cd","outline":"#777587","surface-dim":"#cbdbf5","on-secondary-fixed":"#001e2f","on-background":"#0b1c30","on-secondary-fixed-variant":"#004c6e","on-surface":"#0b1c30","surface-container-low":"#eff4ff","error":"#ba1a1a","on-error":"#ffffff","inverse-surface":"#213145","on-primary-container":"#dad7ff","on-primary-fixed-variant":"#3323cc","surface-bright":"#f8f9ff","on-surface-variant":"#464555","surface-container-lowest":"#ffffff","inverse-primary":"#c3c0ff","secondary-fixed-dim":"#89ceff","outline-variant":"#c7c4d8","primary-container":"#4f46e5","on-secondary":"#ffffff","on-primary":"#ffffff","inverse-on-surface":"#eaf1ff","secondary-fixed":"#c9e6ff","secondary-container":"#39b8fd","background":"#f8f9ff","on-tertiary-fixed-variant":"#2f2ebe"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"margin-desktop":"3rem","gutter":"1.5rem","gutter-lg":"2rem","space-lg":"1.5rem","space-xs":"0.25rem","space-md":"1rem","gutter-sm":"1rem","margin-mobile":"1rem","space-sm":"0.5rem","space-xl":"2.5rem","margin":"2rem"},fontFamily:{"label-lg":["Inter"],"label-sm":["Inter"],"headline-lg-mobile":["Inter"],"display-lg":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"headline-md":["Inter"],"body-md":["Inter"],"display-sm":["Inter"],"title-md":["Inter"],"headline-sm":["Inter"],"headline-lg":["Inter"],"body-sm":["Inter"]},fontSize:{"label-lg":["14px",{lineHeight:"20px",fontWeight:"500"}],"label-sm":["11px",{lineHeight:"16px",letterSpacing:"0.03em",fontWeight:"600"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"600"}],"display-lg":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.01em",fontWeight:"500"}],"body-lg":["18px",{lineHeight:"30px",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.005em",fontWeight:"600"}],"body-md":["15px",{lineHeight:"24px",fontWeight:"400"}],"display-sm":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"title-md":["16px",{lineHeight:"24px",fontWeight:"600"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"600"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"20px",fontWeight:"400"}]}}}}</script>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+<!-- Report dialog: opened from another user's block. Step 1 = reason, step 2 = confirmation -->
+<div class="fixed inset-0 bg-on-background/40 flex items-center justify-center p-gutter">
+<div class="w-full max-w-[480px] bg-surface-container-lowest rounded-2xl shadow-xl">
+<!-- Step 1: reason -->
+<div id="step1">
+<form class="p-space-lg flex flex-col gap-space-md" onsubmit="event.preventDefault(); step1.classList.add('hidden'); step2.classList.remove('hidden');">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Report @liam_chen</h2>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant" for="reason">Reason</label>
+<textarea class="w-full p-3 bg-surface-container-low rounded-lg text-on-surface placeholder:text-outline/70 focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary-container resize-none" id="reason" placeholder="Explain why you are reporting this user…" required rows="4"></textarea>
+</div>
+<div class="flex justify-end gap-space-sm">
+<a class="inline-flex items-center px-space-md h-10 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg" href="../01blog_user_block_public_profile/code.html">Cancel</a>
+<button class="inline-flex items-center px-space-md h-10 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg shadow-sm" type="submit">Report</button>
+</div>
+</form>
+</div>
+<!-- Step 2: confirmation -->
+<div class="hidden" id="step2">
+<div class="p-space-lg flex flex-col gap-space-md">
+<div class="w-11 h-11 rounded-full bg-error-container text-error flex items-center justify-center"><span class="material-symbols-outlined">warning</span></div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Are you sure?</h2>
+<p class="text-on-surface-variant">Do you really want to report @liam_chen? An admin will review your report.</p>
+<div class="flex justify-end gap-space-sm">
+<button class="inline-flex items-center px-space-md h-10 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg" onclick="step2.classList.add('hidden'); step1.classList.remove('hidden');" type="button">Back</button>
+<a class="inline-flex items-center px-space-md h-10 rounded-lg bg-error hover:opacity-90 text-on-error font-label-lg text-label-lg shadow-sm" href="../01blog_user_block_public_profile/code.html">Confirm</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
